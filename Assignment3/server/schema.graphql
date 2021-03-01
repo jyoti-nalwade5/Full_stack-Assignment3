@@ -1,0 +1,31 @@
+enum CategoryType {
+    Shirts
+    Jeans
+    Jackets
+    Sweaters
+    Accessories
+}
+
+type Product {
+    id: Int!
+    category: CategoryType!
+    name: String!
+    pricePerUnit: Float
+    imageUrl: String
+}
+
+input ProductInputs {
+    category: CategoryType!
+    name: String!
+    "Optional, if not supplied, will be set to 'New'"
+    pricePerUnit: Float
+    imageUrl: String
+}
+
+type Mutation {
+    addProduct(product: ProductInputs!): Product!
+}
+
+type Query {
+    productList: [Product!]!
+}
